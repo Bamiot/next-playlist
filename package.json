@@ -8,7 +8,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.25.0",
+    "bcrypt": "^5.0.1",
     "nedb": "^1.8.0",
+    "nedb-promise": "^2.0.1",
     "next": "12.0.9",
     "react": "17.0.2",
     "react-dom": "17.0.2",

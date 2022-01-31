@@ -4,7 +4,7 @@ import styles from './header.module.scss'
 
 import { useRouter } from 'next/router'
 
-const NavElement = ({ href, name }) => {
+function NavElement({ href, name }) {
   const router = useRouter()
   return (
     <Link href={href}>
@@ -16,7 +16,7 @@ const NavElement = ({ href, name }) => {
 export default function Header() {
   const [open, setOpen] = useState(false)
   return (
-    <header className={styles.header}>
+    <header className={[styles.header].join(' ')}>
       <div
         className={[styles.burger, open ? styles.open : null].join(' ')}
         onClick={() => setOpen(!open)}
@@ -27,9 +27,10 @@ export default function Header() {
       </div>
       <nav className={open ? styles.open : null}>
         <NavElement href="/" name="Home" />
-        <NavElement href="tuto" name="Tuto" />
-        <NavElement href="login" name="Login" />
+        <NavElement href="/tuto" name="Tuto" />
+        <NavElement href="/login" name="Login" />
       </nav>
+      <h1>Next-playlist</h1>
     </header>
   )
 }
