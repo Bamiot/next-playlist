@@ -15,6 +15,13 @@ function NavElement({ href, name }) {
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+
+  if (typeof document !== 'undefined')
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('header')) return
+      setOpen(false)
+    })
+
   return (
     <header className={[styles.header].join(' ')}>
       <div

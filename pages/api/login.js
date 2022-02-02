@@ -1,24 +1,38 @@
 import db from '../../utils/dbHandler'
-import { hash } from '../../utils/hash'
+import { comparePassword, hashPassword } from '../../utils/hash'
+import { genToken } from '../../utils/genToken'
 
 export default async function handler(req, res) {
+  console.log('login: ', req.body)
+
   return new Promise((resolve, reject) => {
-    console.log('la')
-    console.log(req.body)
-    const { username, password } = JSON.parse(req.body || '{}')
+    const { username, password } = req.body || {}
     db.user
-      .getUserByUsername(username)
-      .then((user) => {
+      .getUserByName(username)
+      .then(async (user) => {
         if (user) {
-          if (hash(password) === user.password) {
-            res.status(200).json({
-              status: 'success',
-              user: {
-                id: user._id,
-                username: user.username,
-                permission: user.permission
-              }
-            })
+          const isPasswordCorrect = await comparePassword(password, user.hash)
+          if (isPasswordCorrect === true) {
+            const token = genToken()
+            db.user
+              .addToken(user._id, token)
+              .then((user) => {
+                res.status(200).json({
+                  status: 'success',
+                  user: {
+                    id: user._id,
+                    username: user.username,
+                    permission: user.permission,
+                    token: token
+                  }
+                })
+              })
+              .catch((err) => {
+                res.status(401).json({
+                  status: 'error',
+                  message: err
+                })
+              })
           } else {
             res.status(401).json({
               status: 'error',

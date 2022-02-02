@@ -1,17 +1,49 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   height: 100%;
+  button {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 15px;
+    &:hover {
+      background-color: #ccc;
+    }
+  }
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    box-shadow: 0px 0px 15px 5px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px;
+    & > * {
+      margin: 10px 0;
+    }
+    .labeledInput {
+      display: flex;
+      flex-direction: column;
+      input {
+        border-bottom: 1px solid #ccc;
+      }
+    }
+    p {
+      color: red;
+    }
   }
 }
-
-.labeledInput {
+.logged {
+  flex-direction: column;
+  button {
+    padding: 10px 15px;
+    font-size: large;
+  }
+  h1 {
+    margin: 15px;
+  }
 }

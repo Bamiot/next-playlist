@@ -1,9 +1,9 @@
-import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import LocalStorage from '../utils/localStarage'
 import styles from '../styles/Login.module.scss'
 
-const LabeledInput = ({ name, type, value, cb }) => (
-  <div className={styles.labeledInput}>
+const LabeledInput = ({ name, type, value, cb, className }) => (
+  <div className={[styles.labeledInput, className].join(' ')}>
     <label htmlFor={name}>
       {name}
       {': '}
@@ -11,28 +11,6 @@ const LabeledInput = ({ name, type, value, cb }) => (
     <input type={type} name={name} value={value} onChange={(e) => cb(e.target.value)} />
   </div>
 )
-
-async function login(username, password) {
-  const response = await fetch('/api/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/problem+json'
-    },
-    body: JSON.stringify({ username, password })
-  })
-  console.log(response)
-}
-
-async function join(username, password, mail, invitation) {
-  const response = await fetch('/api/join', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: { username, password, mail, invitation }
-  })
-  console.log(response)
-}
 
 export default function Home() {
   const [loginName, setLoginName] = useState('')
@@ -43,9 +21,105 @@ export default function Home() {
   const [joinPasswordConfirm, setJoinPasswordConfirm] = useState('')
   const [invitation, setInvitation] = useState('')
 
-  return (
+  const [isLogged, setIsLogged] = useState(false)
+  const [user, setUser] = useState({})
+  useEffect(function () {
+    const userData = LocalStorage.getLocalData('user-data')
+    if (userData) {
+      setIsLogged(true)
+      setUser(userData)
+    } else {
+      setIsLogged(false)
+    }
+  }, [])
+
+  async function login(event) {
+    event.preventDefault()
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: loginName, password: loginPassword })
+    })
+    const data = await response.json()
+    if (data.status === 'error') {
+      alert(data.message)
+    } else {
+      LocalStorage.saveLocalData('user-data', data.user)
+      window.location.href = '/'
+    }
+  }
+
+  async function join(event) {
+    event.preventDefault()
+    const response = await fetch('/api/join', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: joinName,
+        password: joinPassword,
+        mail: joinMail,
+        invitation
+      })
+    })
+    const data = await response.json()
+    if (data.status === 'error') {
+      alert(data.message)
+    } else {
+      LocalStorage.saveLocalData('user-data', data.user)
+      window.location.href = '/'
+    }
+  }
+
+  function getInvitation(e) {
+    e.target.innerHTML = 'Loading...'
+    fetch('/api/invitation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: user.name,
+        token: user.token
+      })
+    })
+      .then((response) => response.json())
+      .then(async (data) => {
+        if (data.status === 'error') {
+          alert(data.message)
+          console.log(data.message)
+        } else {
+          alert('Invitation copy to clipboard')
+          console.log(data.invitation)
+          e.target.innerHTML = 'Copied !'
+          if ('clipboard' in navigator)
+            return await navigator.clipboard.writeText(data.invitation)
+          else return document.execCommand('copy', true, data.invitation)
+        }
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }
+
+  function logout(event) {
+    event.preventDefault()
+    LocalStorage.removeLocalData('user-data')
+    window.location.href = '/'
+  }
+
+  return isLogged ? (
+    <div className={[styles.container, styles.logged].join(' ')}>
+      <h1>logged as {user.name}</h1>
+      <button onClick={logout}>Logout</button>
+      <button onClick={getInvitation}>Get invitation code</button>
+    </div>
+  ) : (
     <div className={styles.container}>
-      <form>
+      <form onSubmit={login}>
         <h1>Login</h1>
         <LabeledInput name="Username" type="text" value={loginName} cb={setLoginName} />
         <LabeledInput
@@ -54,18 +128,9 @@ export default function Home() {
           value={loginPassword}
           cb={setLoginPassword}
         />
-        <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault()
-            login(loginName, loginPassword)
-          }}
-        >
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
-
-      <form>
+      <form onSubmit={join}>
         <h1>Join</h1>
         <LabeledInput name="Username" type="text" value={joinName} cb={setJoinName} />
         <LabeledInput name="Email" type="email" value={joinMail} cb={setJoinMail} />
@@ -88,15 +153,7 @@ export default function Home() {
           cb={setInvitation}
         />
         <p>all fields are required</p>
-        <button
-          onClick={(e) => {
-            e.preventDefault()
-            if (joinPassword === joinPasswordConfirm)
-              join(joinName, joinPassword, joinMail, invitation)
-          }}
-        >
-          Join
-        </button>
+        <button>Join</button>
       </form>
     </div>
   )

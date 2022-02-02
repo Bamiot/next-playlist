@@ -29,22 +29,22 @@ const user = {
   addUser: (user) => {
     return new Promise((resolve, reject) => {
       userDB.insert(user, (err, newUser) => {
-        if (err) reject(err)
-        resolve(newUser)
+        if (err) return reject(err)
+        return resolve(newUser)
       })
     })
   },
   getUser: (userId) => {
     return new Promise((resolve, reject) => {
       userDB.findOne({ _id: userId }, (err, user) => {
-        if (err) reject(err)
-        resolve(user)
+        if (err) return reject(err)
+        return resolve(user)
       })
     })
   },
-  getUserByUsername: (username) => {
+  getUserByName: (name) => {
     return new Promise((resolve, reject) => {
-      userDB.findOne({ username }, (err, user) => {
+      userDB.findOne({ name }, (err, user) => {
         if (err) reject(err)
         resolve(user)
       })
@@ -53,8 +53,24 @@ const user = {
   getUserByMail: (mail) => {
     return new Promise((resolve, reject) => {
       userDB.findOne({ mail }, (err, user) => {
-        if (err) reject(err)
-        resolve(user)
+        if (err) return reject(err)
+        return resolve(user)
+      })
+    })
+  },
+  addToken: (userId, token) => {
+    return new Promise((resolve, reject) => {
+      userDB.update({ _id: userId }, { $push: { tokens: token } }, (err, user) => {
+        if (err) return reject(err)
+        return resolve(user)
+      })
+    })
+  },
+  clearTokens: (userId) => {
+    return new Promise((resolve, reject) => {
+      userDB.update({ _id: userId }, { $set: { tokens: [] } }, (err, user) => {
+        if (err) return reject(err)
+        return resolve(user)
       })
     })
   }
