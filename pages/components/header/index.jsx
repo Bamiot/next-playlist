@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './header.module.scss'
+import LocalStorage from '../../../utils/localStarage'
 
 import { useRouter } from 'next/router'
 
@@ -15,6 +16,18 @@ function NavElement({ href, name }) {
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+
+  const [isLogged, setIsLogged] = useState(false)
+  const [user, setUser] = useState({})
+  useEffect(function () {
+    const userData = LocalStorage.getLocalData('user-data')
+    if (userData) {
+      setIsLogged(true)
+      setUser(userData)
+    } else {
+      setIsLogged(false)
+    }
+  }, [])
 
   if (typeof document !== 'undefined')
     document.addEventListener('click', (e) => {
@@ -34,7 +47,7 @@ export default function Header() {
       </div>
       <nav className={open ? styles.open : null}>
         <NavElement href="/" name="Home" />
-        <NavElement href="/tuto" name="Tuto" />
+        {isLogged ? <NavElement href="/song" name="Song" /> : null}
         <NavElement href="/login" name="Login" />
       </nav>
       <h1>Next-playlist</h1>

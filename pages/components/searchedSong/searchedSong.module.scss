@@ -1,0 +1,37 @@
+.container {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 100px;
+  margin: 10px 0;
+  figure {
+    img {
+      border-radius: 10px 0 0 10px;
+    }
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: calc(100% - 120px);
+    & > * {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    h1 {
+      font-size: medium;
+      font-weight: bold;
+    }
+    span {
+      font-size: medium;
+      font-weight: 300;
+    }
+    span:nth-child(4) {
+      font-size: small;
+    }
+  }
+}

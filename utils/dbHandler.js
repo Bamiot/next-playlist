@@ -1,5 +1,6 @@
 // impoprt neDB
 const Datastore = require('nedb')
+const { delBasePath } = require('next/dist/shared/lib/router/router')
 
 const songDB = new Datastore({
   filename: './data/songDB.db',
