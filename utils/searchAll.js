@@ -1,6 +1,6 @@
 import { song, artist, album } from './paterns'
 import spotify from './thirdPartyServices/spotify'
-import youtube from './thirdPartyServices/youtube'
+import youtube from './thirdPartyServices/youtubeMusic'
 
 module.exports = {
   tracks: (query, limite, offset) =>
