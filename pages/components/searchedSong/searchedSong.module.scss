@@ -34,4 +34,7 @@
       font-size: small;
     }
   }
+  &::-webkit-scrollbar {
+    left: 100px;
+  }
 }

@@ -32,6 +32,7 @@ $burger-color: $light-gray;
     align-items: center;
     left: -150px;
     transition: all 0.3s ease-in-out;
+    z-index: 1;
     a {
       position: relative;
       font-family: 'Roboto', sans-serif;
