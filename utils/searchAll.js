@@ -6,6 +6,23 @@ import youtube from './thirdPartyServices/youtube'
 module.exports = {
   tracks: (query) =>
     new Promise((resolve, reject) => {
+      Promise.all([youtubeMusic.search(query, 'song')])
+        .then((results) => {
+          const [youtubeMusicResults] = results
+          const allData = [...youtubeMusicResults]
+          console.log(allData)
+          return resolve(allData)
+        })
+        .catch((err) => {
+          return reject(err)
+        })
+    })
+}
+
+/*
+module.exports = {
+  tracks: (query) =>
+    new Promise((resolve, reject) => {
       Promise.all([youtubeMusic.search(query, 'song'), youtube.search(query)])
         .then((results) => {
           const [youtubeMusicResults, youtubeResults] = results
@@ -18,3 +35,5 @@ module.exports = {
         })
     })
 }
+
+*/
