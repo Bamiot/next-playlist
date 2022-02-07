@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Script from 'next/script'
 import styles from './layout.module.scss'
 
 export default function Layout({ children }) {
@@ -14,10 +13,6 @@ export default function Layout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet"
         />
-        <Script
-          src="https://kit.fontawesome.com/15924c2e2e.js"
-          crossOrigin="anonymous"
-        ></Script>
       </Head>
 
       <div className={styles.container}>{children}</div>
