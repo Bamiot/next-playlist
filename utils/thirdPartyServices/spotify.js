@@ -1,5 +1,8 @@
 const SpotifyWebApi = require('spotify-web-api-node')
 
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
+const CLIEN_SECRET = process.env.SPOTIFY_CLIENT_SECRET
+
 const spotify = new SpotifyWebApi({
   clientId: CLIENT_ID,
   clientSecret: CLIEN_SECRET

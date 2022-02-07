@@ -11,9 +11,9 @@ export default async function handler(req, res) {
         if (user) {
           if (user.tokens.includes(token)) {
             searchAll
-              .tracks(query, 10, 0)
+              .tracks(query)
               .then((data) => {
-                // console.log('search', data)
+                console.log('search', data)
                 res.status(200).json({
                   status: 'success',
                   result: data

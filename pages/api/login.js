@@ -16,12 +16,12 @@ export default async function handler(req, res) {
             const token = genToken()
             db.user
               .addToken(user._id, token)
-              .then((user) => {
+              .then(() => {
                 res.status(200).json({
                   status: 'success',
                   user: {
                     id: user._id,
-                    username: user.username,
+                    name: user.name,
                     permission: user.permission,
                     token: token
                   }

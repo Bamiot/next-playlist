@@ -108,7 +108,7 @@ export default function Home() {
   function logout(event) {
     event.preventDefault()
     LocalStorage.removeLocalData('user-data')
-    window.location.href = '/'
+    window.location.href = '/login'
   }
 
   return isLogged ? (

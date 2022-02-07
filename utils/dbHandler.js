@@ -61,9 +61,9 @@ const user = {
   },
   addToken: (userId, token) => {
     return new Promise((resolve, reject) => {
-      userDB.update({ _id: userId }, { $push: { tokens: token } }, (err, user) => {
+      userDB.update({ _id: userId }, { $push: { tokens: token } }, (err) => {
         if (err) return reject(err)
-        return resolve(user)
+        return resolve()
       })
     })
   },

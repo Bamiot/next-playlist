@@ -1,14 +1,17 @@
 import { song, artist, album } from './paterns'
 import spotify from './thirdPartyServices/spotify'
-import youtube from './thirdPartyServices/youtubeMusic'
+import youtubeMusic from './thirdPartyServices/youtubeMusic'
+import youtube from './thirdPartyServices/youtube'
 
 module.exports = {
-  tracks: (query, limite, offset) =>
+  tracks: (query) =>
     new Promise((resolve, reject) => {
-      Promise.all([youtube.search(query, 'song')])
+      Promise.all([youtubeMusic.search(query, 'song'), youtube.search(query)])
         .then((results) => {
-          // console.log(results)
-          return resolve(...results)
+          const [youtubeMusicResults, youtubeResults] = results
+          const allData = [...youtubeMusicResults, ...youtubeResults]
+          console.log(allData)
+          return resolve(allData)
         })
         .catch((err) => {
           return reject(err)
