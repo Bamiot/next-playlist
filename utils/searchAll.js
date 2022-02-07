@@ -6,10 +6,10 @@ import youtube from './thirdPartyServices/youtube'
 module.exports = {
   tracks: (query) =>
     new Promise((resolve, reject) => {
-      Promise.all([youtubeMusic.search(query, 'song')])
+      youtubeMusic
+        .search(query, 'song')
         .then((results) => {
-          const [youtubeMusicResults] = results
-          const allData = [...youtubeMusicResults]
+          const allData = [...results]
           console.log(allData)
           return resolve(allData)
         })
