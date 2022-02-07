@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from './searchedSong.module.scss'
 
 export default function SearchedSong({ song }) {
-  const duration = new Date(song.duration || 0)
+  const duration = new Date(song ? song.duration : 0)
   return (
     <div className={styles.container}>
       <figure>
