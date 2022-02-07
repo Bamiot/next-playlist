@@ -3,7 +3,7 @@ import styles from './searchedSong.module.scss'
 
 export default function SearchedSong({ song }) {
   const duration = new Date(song ? song.duration : 0)
-  return (
+  return song ? (
     <div className={styles.container}>
       <figure>
         <Image
@@ -23,5 +23,5 @@ export default function SearchedSong({ song }) {
         }${duration.getSeconds()}`}</span>
       </div>
     </div>
-  )
+  ) : null
 }
