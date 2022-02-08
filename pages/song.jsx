@@ -4,7 +4,6 @@ import LocalStorage from '../utils/localStarage'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchedSong from './components/searchedSong'
-import { album, artist, song, thumbnail } from '../utils/paterns'
 
 export default function Song() {
   const [query, setQuery] = useState('')

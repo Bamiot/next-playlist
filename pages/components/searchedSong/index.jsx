@@ -7,7 +7,7 @@ export default function SearchedSong({ song }) {
     <div className={styles.container}>
       <figure>
         <Image
-          src={song ? song.thumbnail.url : ''}
+          src={song ? song.thumbnails[1].url : ''}
           alt={song ? song.name : 'error'}
           layout="fixed"
           height="98px"
@@ -16,8 +16,8 @@ export default function SearchedSong({ song }) {
       </figure>
       <div>
         <h1>{song ? song.name : ''}</h1>
-        <span>{song ? song.artist.name : ''}</span>
-        <span>{song ? song.album.name : ''}</span>
+        <span>{song ? song.artists.join(', ') : ''}</span>
+        <span>{song && song.album ? song.album : ''}</span>
         <span>{`${duration ? duration.getMinutes() : 0}:${
           duration && duration.getSeconds() > 9 ? '' : '0'
         }${duration ? duration.getSeconds() : 0}`}</span>

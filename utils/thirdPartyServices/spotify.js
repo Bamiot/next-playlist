@@ -1,3 +1,4 @@
+import { song, thumbnail, pIds } from '../paterns'
 const SpotifyWebApi = require('spotify-web-api-node')
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
@@ -29,9 +30,27 @@ module.exports = {
       init()
         .then(() => {
           spotify
-            .search(query, ['track'], { limit, offset })
+            .search(query, ['track'], { limit, offset, market: 'FR' })
             .then((data) => {
-              resolve(data.body)
+              resolve(
+                data.body.tracks.items.map((item, i) =>
+                  song({
+                    name: item.name,
+                    artists: item.artists.map((artist, i) => artist.name),
+                    album: item.album.name,
+                    duration: item.duration_ms,
+                    thumbnails: item.album.images.map((img) =>
+                      thumbnail({ url: img.url, height: img.height, width: img.width })
+                    ),
+                    releaseDate: new Date(item.album.release_date).toString(),
+                    explicit: item.explicit,
+                    pIds: pIds({
+                      isrc: item.external_ids.isrc,
+                      spotify: item.id
+                    })
+                  })
+                )
+              )
             })
             .catch((err) => {
               reject(err)

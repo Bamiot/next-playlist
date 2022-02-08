@@ -1,4 +1,4 @@
-import { song, artist, album, thumbnail } from '../paterns'
+import { song, thumbnail, pIds } from '../paterns'
 const YoutubeMusicApi = require('youtube-music-api')
 
 const api = new YoutubeMusicApi()
@@ -26,17 +26,22 @@ module.exports = {
             .then((data) => {
               resolve(
                 data.content.map((item, i) =>
-                  song(
-                    item.name,
-                    artist(item.artist.name),
-                    album(item.album.name),
-                    item.duration,
-                    thumbnail(
-                      item.thumbnails[1].url,
-                      item.thumbnails[1].height,
-                      item.thumbnails[1].width
-                    )
-                  )
+                  song({
+                    name: item.name,
+                    artists: [item.artist.name],
+                    album: item.album.name,
+                    duration: item.duration,
+                    thumbnails: item.thumbnails.map((img) =>
+                      thumbnail({
+                        url: img.url,
+                        height: img.height,
+                        width: img.width
+                      })
+                    ),
+                    pIds: pIds({
+                      youtube: item.videoId
+                    })
+                  })
                 )
               )
             })

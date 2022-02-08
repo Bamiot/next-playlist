@@ -6,11 +6,15 @@ import youtube from './thirdPartyServices/youtube'
 module.exports = {
   tracks: (query) =>
     new Promise((resolve, reject) => {
-      youtubeMusic
-        .search(query, 'song')
+      Promise.all([
+        youtubeMusic.search(query, 'song'),
+        youtube.search(query),
+        spotify.search(query, 20, 0)
+      ])
         .then((results) => {
-          const allData = [...results]
-          console.log(allData)
+          const [youtubeMusicResults, youtubeResults, spotifyResults] = results
+          const allData = [...youtubeMusicResults, ...youtubeResults, ...spotifyResults]
+          // console.log(allData)
           return resolve(allData)
         })
         .catch((err) => {
@@ -18,22 +22,3 @@ module.exports = {
         })
     })
 }
-
-/*
-module.exports = {
-  tracks: (query) =>
-    new Promise((resolve, reject) => {
-      Promise.all([youtubeMusic.search(query, 'song'), youtube.search(query)])
-        .then((results) => {
-          const [youtubeMusicResults, youtubeResults] = results
-          const allData = [...youtubeMusicResults, ...youtubeResults]
-          console.log(allData)
-          return resolve(allData)
-        })
-        .catch((err) => {
-          return reject(err)
-        })
-    })
-}
-
-*/

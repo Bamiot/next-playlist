@@ -1,17 +1,34 @@
 module.exports = {
-  user: (name, mail, permission, hash, invitation, tokens) => {
+  user: ({ name, mail, permission, hash, invitation, tokens }) => {
     return { name, mail, permission, hash, invitation, tokens }
   },
-  artist: (name) => {
-    return { name }
+  song: ({
+    name,
+    artists,
+    description,
+    album,
+    duration,
+    thumbnails,
+    releaseDate,
+    explicit,
+    pIds
+  }) => {
+    return {
+      name,
+      artists,
+      description,
+      album,
+      duration,
+      thumbnails,
+      releaseDate,
+      explicit,
+      pIds
+    }
   },
-  album: (name) => {
-    return { name }
-  },
-  song: (name, artist, album, duration, thumbnail) => {
-    return { name, artist, album, duration, thumbnail }
-  },
-  thumbnail: (url, height, width) => {
+  thumbnail: ({ url, height, width }) => {
     return { url, height, width }
+  },
+  pIds: ({ isrc, spotify, youtube }) => {
+    return { isrc, spotify, youtube }
   }
 }
