@@ -1,34 +1,51 @@
 // impoprt neDB
-const Datastore = require('nedb')
-const { delBasePath } = require('next/dist/shared/lib/router/router')
+// const Datastore = require('nedb')
 
-const songDB = new Datastore({
-  filename: './data/songDB.db',
-  autoload: true
+// const songDB = new Datastore({
+//   filename: './data/songDB.db',
+//   autoload: true
+// })
+
+// const userDB = new Datastore({
+//   filename: './data/userDB.db',
+//   autoload: true
+// })
+
+// import mongodb
+const { MongoClient } = require('mongodb')
+
+const url = process.env.DB_URL
+const DB_USER = process.env.DB_USER
+const DB_PASSWORD = process.env.DB_PASSWORD
+
+const client = new MongoClient(url, {
+  auth: {
+    username: DB_USER,
+    password: DB_PASSWORD
+  }
 })
 
-const userDB = new Datastore({
-  filename: './data/userDB.db',
-  autoload: true
-})
+const dbName = 'nextPlaylist'
+
+let songDB
+let userDB
+
+const init = async () => {
+  await client.connect()
+  const db = client.db(dbName)
+  songDB = db.collection('songDB')
+  userDB = db.collection('userDB')
+}
 
 const song = {
-  addSong: (song) => {
-    songDB.insert(song)
-  },
-  getSong: (songId) => {
-    return new Promise((resolve, reject) => {
-      songDB.findOne({ _id: songId }, (err, song) => {
-        if (err) reject(err)
-        resolve(song)
-      })
-    })
-  }
+  addSong: (song) => {},
+  getSong: (songId) => {}
 }
 
 const user = {
   addUser: (user) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       userDB.insert(user, (err, newUser) => {
         if (err) return reject(err)
         return resolve(newUser)
@@ -36,7 +53,8 @@ const user = {
     })
   },
   getUser: (userId) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       userDB.findOne({ _id: userId }, (err, user) => {
         if (err) return reject(err)
         return resolve(user)
@@ -44,7 +62,8 @@ const user = {
     })
   },
   getUserByName: (name) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       userDB.findOne({ name }, (err, user) => {
         if (err) reject(err)
         resolve(user)
@@ -52,7 +71,8 @@ const user = {
     })
   },
   getUserByMail: (mail) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       userDB.findOne({ mail }, (err, user) => {
         if (err) return reject(err)
         return resolve(user)
@@ -60,7 +80,8 @@ const user = {
     })
   },
   addToken: (userId, token) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       userDB.update({ _id: userId }, { $push: { tokens: token } }, (err) => {
         if (err) return reject(err)
         return resolve()
@@ -68,7 +89,8 @@ const user = {
     })
   },
   clearTokens: (userId) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       userDB.update({ _id: userId }, { $set: { tokens: [] } }, (err, user) => {
         if (err) return reject(err)
         return resolve(user)

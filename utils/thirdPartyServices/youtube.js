@@ -9,14 +9,14 @@ const youtube = google.youtube({
 })
 
 module.exports = {
-  search: (query) => {
+  search: (query, limite = 10) => {
     return new Promise((resolve, reject) => {
       youtube.search.list(
         {
           part: 'snippet',
           q: query,
           type: 'video',
-          maxResults: 10
+          maxResults: limite
         },
         (err, data) => {
           if (err) return reject(err)

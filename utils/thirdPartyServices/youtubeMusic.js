@@ -22,7 +22,7 @@ module.exports = {
       init()
         .then(() => {
           api
-            .search(query, type)
+            .search(query, type, 5)
             .then((data) => {
               resolve(
                 data.content.map((item, i) =>
@@ -39,7 +39,7 @@ module.exports = {
                       })
                     ),
                     pIds: pIds({
-                      youtube: item.videoId
+                      youtubeMusic: item.videoId
                     })
                   })
                 )

@@ -28,7 +28,7 @@ module.exports = {
   thumbnail: ({ url, height, width }) => {
     return { url, height, width }
   },
-  pIds: ({ isrc, spotify, youtube }) => {
-    return { isrc, spotify, youtube }
+  pIds: ({ isrc, spotify, youtube, deezer, apple }) => {
+    return { isrc, spotify, youtube, deezer, apple }
   }
 }

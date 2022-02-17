@@ -30,14 +30,14 @@ export default function handler(req, res) {
                   .then(async (verified) => {
                     if (verified) {
                       const token = genToken()
-                      const newUser = patern.user(
-                        username,
-                        mail,
-                        'user',
-                        await hashPassword(password),
-                        invitation,
-                        [token]
-                      )
+                      const newUser = patern.user({
+                        name: username,
+                        mail: mail,
+                        permission: 'user',
+                        hash: await hashPassword(password),
+                        invitation: invitation,
+                        tokens: [token]
+                      })
                       db.user
                         .addUser(newUser)
                         .then(() => {

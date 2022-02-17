@@ -132,3 +132,53 @@ const youtubeMusic = {
   ],
   params: 'wAEB'
 }
+
+const deezer = {
+  id: 1543888122,
+  readable: true,
+  title: 'Afterlife',
+  title_short: 'Afterlife',
+  title_version: '',
+  link: 'https://www.deezer.com/track/1543888122',
+  duration: 240,
+  rank: 219940,
+  explicit_lyrics: false,
+  explicit_content_lyrics: 0,
+  explicit_content_cover: 2,
+  preview:
+    'https://cdns-preview-e.dzcdn.net/stream/c-e47df21126dc877578db71b49ca0f054-2.mp3',
+  md5_image: 'd83f9746227ebdc0c91a09a1eefdab54',
+  artist: {
+    id: 6881291,
+    name: 'Skone',
+    link: 'https://www.deezer.com/artist/6881291',
+    picture: 'https://api.deezer.com/artist/6881291/image',
+    picture_small:
+      'https://e-cdns-images.dzcdn.net/images/artist/bc9a4f469568dd960152e24da861c787/56x56-000000-80-0-0.jpg',
+    picture_medium:
+      'https://e-cdns-images.dzcdn.net/images/artist/bc9a4f469568dd960152e24da861c787/250x250-000000-80-0-0.jpg',
+    picture_big:
+      'https://e-cdns-images.dzcdn.net/images/artist/bc9a4f469568dd960152e24da861c787/500x500-000000-80-0-0.jpg',
+    picture_xl:
+      'https://e-cdns-images.dzcdn.net/images/artist/bc9a4f469568dd960152e24da861c787/1000x1000-000000-80-0-0.jpg',
+    tracklist: 'https://api.deezer.com/artist/6881291/top?limit=50',
+    type: 'artist'
+  },
+  album: {
+    id: 270680762,
+    title: 'Afterlife',
+    cover: 'https://api.deezer.com/album/270680762/image',
+    cover_small:
+      'https://e-cdns-images.dzcdn.net/images/cover/d83f9746227ebdc0c91a09a1eefdab54/56x56-000000-80-0-0.jpg',
+    cover_medium:
+      'https://e-cdns-images.dzcdn.net/images/cover/d83f9746227ebdc0c91a09a1eefdab54/250x250-000000-80-0-0.jpg',
+    cover_big:
+      'https://e-cdns-images.dzcdn.net/images/cover/d83f9746227ebdc0c91a09a1eefdab54/500x500-000000-80-0-0.jpg',
+    cover_xl:
+      'https://e-cdns-images.dzcdn.net/images/cover/d83f9746227ebdc0c91a09a1eefdab54/1000x1000-000000-80-0-0.jpg',
+    md5_image: 'd83f9746227ebdc0c91a09a1eefdab54',
+    tracklist: 'https://api.deezer.com/album/270680762/tracks',
+    type: 'album'
+  },
+  type: 'track'
+}
