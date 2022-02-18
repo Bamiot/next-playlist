@@ -39,7 +39,7 @@ module.exports = {
                       })
                     ),
                     pIds: pIds({
-                      youtubeMusic: item.videoId
+                      youtube: item.videoId
                     })
                   })
                 )

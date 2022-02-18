@@ -11,7 +11,7 @@ import { agregateSound, findBestMatch, weights } from './mergeSong'
  * @returns {Array} Array of songs
  */
 function mergeResults(results) {
-  const resultName = Object.keys(results) // ['youtubeMusic', 'youtube', 'spotify', 'deezer']
+  const resultName = Object.keys(results) // ['youtubeMusic', 'spotify', 'deezer']
 
   // start search with each service
   const mergedResults = resultName.map((serviceName) =>
@@ -40,7 +40,7 @@ function mergeResults(results) {
       .filter((x) => x !== false)
       .map((x) => agregateSound(x))
   )
-  return mergedResults.reduce((acc, cur) => acc.concat(cur), [])
+  return [...mergedResults[1]] //.reduce((acc, cur) => acc.concat(cur), [])
 }
 
 module.exports = {
@@ -48,15 +48,15 @@ module.exports = {
     new Promise((resolve, reject) => {
       Promise.all([
         youtubeMusic.search(query, 'song'),
-        youtube.search(query, 20),
+        // youtube.search(query, 20),
         spotify.search(query, 20, 0),
         deezer.search(query, 20)
       ])
         .then((results) => {
-          const [youtubeMusic, youtube, spotify, deezer] = results
-          const allData = [...youtubeMusic, ...youtube, ...spotify, ...deezer]
+          const [youtubeMusic, spotify, deezer] = results
+          const allData = [...youtubeMusic, ...spotify, ...deezer]
 
-          const mergedResults = mergeResults({ youtubeMusic, youtube, spotify, deezer })
+          const mergedResults = mergeResults({ youtubeMusic, spotify, deezer })
 
           return resolve(mergedResults)
         })

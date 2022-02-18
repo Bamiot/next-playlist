@@ -12,11 +12,11 @@
       border-radius: 10px 0 0 10px;
     }
   }
-  & > div {
+  .info {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: calc(100% - 120px);
+    width: calc(100% - 130px);
     & > * {
       text-overflow: ellipsis;
       overflow: hidden;
@@ -36,5 +36,27 @@
   }
   &::-webkit-scrollbar {
     left: 100px;
+  }
+  .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    & > * {
+      font-size: 24px;
+      cursor: alias;
+    }
+    .spotify {
+      color: #1dd05d;
+    }
+    .youtube {
+      color: red;
+    }
+    .deezer {
+      color: rgb(1, 84, 179);
+    }
+    .missing {
+      filter: grayscale(100%) opacity(0.5);
+    }
   }
 }

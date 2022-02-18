@@ -191,12 +191,12 @@ function compare(a, b) {
       // compare explicit
       score.explicit = a.explicit === b.explicit ? 1 : 0
     }
-    if (isType(a.pIds, b.pIds, 'object')) {
-      // compare pIds
-      const aid = a.pIds.youtube || a.pIds.youtubeMusic
-      const bid = b.pIds.youtube || b.pIds.youtubeMusic
-      if (isType(aid, bid, 'string')) score.pIds = aid.includes(bid) ? 1 : 0
-    }
+    // if (isType(a.pIds, b.pIds, 'object')) {
+    //   // compare pIds
+    //   const aid = a.pIds.youtube || a.pIds.youtubeMusic
+    //   const bid = b.pIds.youtube || b.pIds.youtubeMusic
+    //   if (isType(aid, bid, 'string')) score.pIds = aid.includes(bid) ? 1 : 0
+    // }
   }
   Object.keys(score).forEach((key) => {
     const s = score[key]
@@ -254,7 +254,7 @@ function findBestMatch(target, list, weight) {
  */
 function agregateSound(sounds) {
   const agregated = sounds.reference
-  Object.keys(sounds).forEach((key) => {
+  for (const key in sounds) {
     if (key !== 'reference') {
       const sound = sounds[key].song
       if (String(sound.name).length < String(agregated.name).length)
@@ -268,11 +268,21 @@ function agregateSound(sounds) {
       if (agregated.releaseDate === undefined) agregated.releaseDate = sound.releaseDate
       if (agregated.explicit === undefined) agregated.explicit = sound.explicit
       agregated.thumbnails = [...agregated.thumbnails, ...sound.thumbnails]
-      Object.keys(sound.pIds).forEach((pIdKey) => {
-        agregated.pIds[pIdKey] = sound.pIds[pIdKey]
-      })
+      // pIds
+      if (agregated.pIds.isrc === undefined && sound.pIds.isrc !== undefined)
+        agregated.pIds.isrc = sound.pIds.isrc
+      if (agregated.pIds.spotify === undefined && sound.pIds.spotify !== undefined)
+        agregated.pIds.spotify = sound.pIds.spotify
+      if (agregated.pIds.youtube === undefined && sound.pIds.youtube !== undefined)
+        agregated.pIds.youtube = sound.pIds.youtube
+      if (agregated.pIds.apple === undefined && sound.pIds.apple !== undefined)
+        agregated.pIds.apple = sound.pIds.apple
+      if (agregated.pIds.deezer === undefined && sound.pIds.deezer !== undefined)
+        agregated.pIds.deezer = sound.pIds.deezer
+      if (agregated.pIds.soundcloud === undefined && sound.pIds.soundcloud !== undefined)
+        agregated.pIds.soundcloud = sound.pIds.soundcloud
     }
-  })
+  }
   return agregated
 }
 
