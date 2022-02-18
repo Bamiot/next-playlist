@@ -61,6 +61,17 @@ $burger-color: $light-gray;
   .open {
     left: 0px;
   }
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    span {
+      font-weight: 600;
+    }
+  }
 }
 // burger
 .burger {

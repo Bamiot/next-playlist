@@ -2,8 +2,11 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import styles from './header.module.scss'
 import LocalStorage from '../../../utils/localStarage'
-
+import getConfig from 'next/config'
 import { useRouter } from 'next/router'
+
+const { publicRuntimeConfig } = getConfig()
+const { version } = publicRuntimeConfig
 
 function NavElement({ href, name }) {
   const router = useRouter()
@@ -49,6 +52,9 @@ export default function Header() {
         <NavElement href="/" name="Home" />
         {isLogged ? <NavElement href="/song" name="Song" /> : null}
         <NavElement href="/login" name="Login" />
+        <footer>
+          Version: <span>{version}</span>
+        </footer>
       </nav>
       <h1>Next-playlist</h1>
     </header>

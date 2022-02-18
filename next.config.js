@@ -1,3 +1,5 @@
+const { version } = require('./package.json')
+
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -10,5 +12,8 @@ module.exports = {
   },
   future: {
     webpack5: true
+  },
+  publicRuntimeConfig: {
+    version: version
   }
 }
