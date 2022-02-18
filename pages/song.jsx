@@ -4,10 +4,12 @@ import LocalStorage from '../utils/localStarage'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchedSong from './components/searchedSong'
+import LoadingSpinner from './components/loadingSpinner/loadingSpinner'
 
 export default function Song() {
   const [query, setQuery] = useState('')
   const [songs, setSongs] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const [isLogged, setIsLogged] = useState(false)
   const [user, setUser] = useState({})
@@ -23,6 +25,7 @@ export default function Song() {
 
   async function search(event) {
     event.preventDefault()
+    setLoading(true)
     const response = await fetch('/api/search', {
       method: 'POST',
       headers: {
@@ -41,6 +44,7 @@ export default function Song() {
       console.log(data.result)
       setSongs(data.result)
     }
+    setLoading(false)
   }
 
   return isLogged ? (
@@ -57,14 +61,19 @@ export default function Song() {
         </button>
       </form>
       <ul>
-        {songs.length > 0 ? (
+        {loading ? (
+          <LoadingSpinner />
+        ) : songs.length > 0 ? (
           songs.map((song, i) => (
             <li key={i}>
               <SearchedSong song={song} />
             </li>
           ))
         ) : (
-          <li>No results</li>
+          <li>
+            No results, try with a more precise search, for example with the artist or the
+            album.
+          </li>
         )}
       </ul>
     </div>

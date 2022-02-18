@@ -1,3 +1,5 @@
+@import './variable';
+
 @mixin mobile {
   @media (max-width: 599px) {
     @content;

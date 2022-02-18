@@ -1,8 +1,8 @@
 const { compareTwoStrings } = require('string-similarity')
 
 const globalWeight = {
-  minimumScore: 2,
-  name: 1.7,
+  minimumScore: 2.8,
+  name: 1.8,
   artists: 0.5,
   description: 1,
   album: 0.6,
@@ -14,13 +14,13 @@ const globalWeight = {
 
 /* Weights */
 const weights = {
-  maxNotFound: 1,
+  maxNotFound: 0,
   youtube: {
-    minimumScore: 2.2,
-    name: globalWeight.name,
+    minimumScore: 2.6,
+    name: 1.8,
     artists: 0.8,
     description: 0,
-    album: globalWeight.album,
+    album: 0,
     duration: globalWeight.duration,
     releaseDate: globalWeight.releaseDate,
     explicit: 0,
@@ -169,7 +169,7 @@ function compare(a, b) {
             )
           )
           .reduce((pre, cur) => pre + cur, 0) /
-        (a.artists.length < b.artists.length ? a.artists : b.artists).length
+        (a.artists.length > b.artists.length ? a.artists : b.artists).length
     }
     if (isType(a.description, b.description, 'string')) {
       // compare description

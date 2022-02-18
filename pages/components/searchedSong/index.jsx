@@ -27,16 +27,15 @@ export default function SearchedSong({ song }) {
         }${duration ? duration.getSeconds() : 0}`}</span>
       </div>
       <div className={styles.services}>
-        <FontAwesomeIcon
-          icon={faSpotify}
-          onClick={() => {
-            window.open(`https://open.spotify.com/track/${song.pIds.spotify}`, '_blank')
-          }}
-          className={[
-            styles.spotify,
-            song.pIds.spotify !== undefined ? null : styles.missing
-          ].join(' ')}
-        />
+        <a href={`https://open.spotify.com/track/${song.pIds.spotify}`} target="_blank">
+          <FontAwesomeIcon
+            icon={faSpotify}
+            className={[
+              styles.spotify,
+              song.pIds.spotify !== undefined ? null : styles.missing
+            ].join(' ')}
+          />
+        </a>
         <FontAwesomeIcon
           icon={faYoutube}
           onClick={() => {
@@ -53,7 +52,7 @@ export default function SearchedSong({ song }) {
         <FontAwesomeIcon
           icon={faDeezer}
           onClick={() => {
-            window.open(`https://deezer.page.link/${song.pIds.deezer}`, '_blank')
+            window.open(`https://deezer.com/track/${song.pIds.deezer}`, '_blank')
           }}
           className={[
             styles.deezer,
