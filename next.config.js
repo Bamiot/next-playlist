@@ -7,5 +7,8 @@ module.exports = {
       'i.scdn.co',
       'e-cdns-images.dzcdn.net'
     ]
+  },
+  future: {
+    webpack5: true
   }
 }
