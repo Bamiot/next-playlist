@@ -27,15 +27,16 @@ export default function SearchedSong({ song }) {
         }${duration ? duration.getSeconds() : 0}`}</span>
       </div>
       <div className={styles.services}>
-        <a href={`https://open.spotify.com/track/${song.pIds.spotify}`} target="_blank">
-          <FontAwesomeIcon
-            icon={faSpotify}
-            className={[
-              styles.spotify,
-              song.pIds.spotify !== undefined ? null : styles.missing
-            ].join(' ')}
-          />
-        </a>
+        <FontAwesomeIcon
+          icon={faSpotify}
+          onClick={() =>
+            window.open(`https://open.spotify.com/track/${song.pIds.spotify}`, '_blank')
+          }
+          className={[
+            styles.spotify,
+            song.pIds.spotify !== undefined ? null : styles.missing
+          ].join(' ')}
+        />
         <FontAwesomeIcon
           icon={faYoutube}
           onClick={() => {
