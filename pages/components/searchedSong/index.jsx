@@ -6,12 +6,18 @@ import { faSpotify, faYoutube, faDeezer } from '@fortawesome/free-brands-svg-ico
 
 export default function SearchedSong({ song }) {
   const duration = new Date(song ? song.duration : 0)
-  console.log(song)
+  // console.log(song)
+
+  // find best thumbnail
+  const useThumbnail = song.thumbnails
+    .reverse()
+    .find((t) => t.width === t.height && t.width >= 98)
+
   return song ? (
     <div className={styles.container}>
       <figure>
         <Image
-          src={song ? song.thumbnails[1].url : ''}
+          src={song ? useThumbnail.url || song.thumbnails[0].url : ''}
           alt={song ? song.name : 'error'}
           layout="fixed"
           height="98px"
