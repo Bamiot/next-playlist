@@ -1,29 +1,16 @@
-// impoprt neDB
-// const Datastore = require('nedb')
-
-// const songDB = new Datastore({
-//   filename: './data/songDB.db',
-//   autoload: true
-// })
-
-// const userDB = new Datastore({
-//   filename: './data/userDB.db',
-//   autoload: true
-// })
-
-// import mongodb
 const { MongoClient } = require('mongodb')
-
 const url = process.env.DB_URL
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 
-const client = new MongoClient(url, {
+const options = {
   auth: {
     username: DB_USER,
     password: DB_PASSWORD
   }
-})
+}
+
+const client = new MongoClient(url, options)
 
 const dbName = 'nextPlaylist'
 
@@ -38,8 +25,22 @@ const init = async () => {
 }
 
 const song = {
-  addSong: (song) => {},
-  getSong: (songId) => {}
+  addSong: (song) => {
+    return new Promise((resolve, reject) => {
+      songDB.insertOne(song, (err, result) => {
+        if (err) return reject(err)
+        else return resolve(result)
+      })
+    })
+  },
+  getSong: (songId) => {
+    return new Promise((resolve, reject) => {
+      songDB.findOne({ _id: songId }, (err, result) => {
+        if (err) return reject(err)
+        else return resolve(result)
+      })
+    })
+  }
 }
 
 const user = {

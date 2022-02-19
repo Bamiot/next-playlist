@@ -1,4 +1,4 @@
-import styles from '../styles/Song.module.scss'
+import styles from '../styles/Search.module.scss'
 import { useState, useEffect } from 'react'
 import LocalStorage from '../utils/localStarage'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'

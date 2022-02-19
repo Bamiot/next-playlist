@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import LocalStorage from '../utils/localStarage'
-import styles from '../styles/Login.module.scss'
+import styles from '../styles/Account.module.scss'
 
 const LabeledInput = ({ name, type, value, cb, className }) => (
   <div className={[styles.labeledInput, className].join(' ')}>

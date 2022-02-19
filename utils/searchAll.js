@@ -40,7 +40,7 @@ function mergeResults(results) {
       .filter((x) => x !== false)
       .map((x) => agregateSound(x))
   )
-  return [...mergedResults[1]] //.reduce((acc, cur) => acc.concat(cur), [])
+  return [...mergedResults[1]]
 }
 
 module.exports = {

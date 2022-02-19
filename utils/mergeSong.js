@@ -62,6 +62,15 @@ const weights = {
 }
 
 /**
+ * compare thumbnails
+ * @param {Object} a thumbnail
+ * @param {Object} b thumbnail
+ * @returns {boolean}
+ */
+const isSameThumbnail = (a, b) =>
+  a.width === b.width && a.height === b.height && a.url === b.url
+
+/**
  * return true if type of two object is equal
  * @param {string} type // string, object, array, number, boolean, null, undefined
  * @return {boolean}
@@ -283,6 +292,19 @@ function agregateSound(sounds) {
         agregated.pIds.soundcloud = sound.pIds.soundcloud
     }
   }
+
+  // filter thumbnail duplicate
+  agregated.thumbnails
+    .sort((a, b) => {
+      if (a.width > b.width || a.height > b.height) return -1
+      if (a.width < b.width || a.height < b.height) return 1
+      return 0
+    })
+    .filter((e, i, a) => {
+      if (i === 0) return true
+      return !isSameThumbnail(e, a[i - 1])
+    })
+
   return agregated
 }
 

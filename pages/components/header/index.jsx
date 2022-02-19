@@ -50,8 +50,8 @@ export default function Header() {
       </div>
       <nav className={open ? styles.open : null}>
         <NavElement href="/" name="Home" />
-        {isLogged ? <NavElement href="/song" name="Song" /> : null}
-        <NavElement href="/login" name="Login" />
+        {isLogged ? <NavElement href="/search" name="Search" /> : null}
+        <NavElement href="/account" name="Account" />
         <footer>
           Version: <span>{version}</span>
         </footer>
