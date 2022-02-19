@@ -52,6 +52,7 @@ export default function Header() {
         <NavElement href="/" name="Home" />
         {isLogged ? <NavElement href="/search" name="Search" /> : null}
         <NavElement href="/account" name="Account" />
+        <NavElement href="/changelog" name="Changelog" />
         <footer>
           Version: <span>{version}</span>
         </footer>

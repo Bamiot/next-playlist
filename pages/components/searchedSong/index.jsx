@@ -1,23 +1,26 @@
 import Image from 'next/image'
 import styles from './searchedSong.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faSpotify, faYoutube, faDeezer } from '@fortawesome/free-brands-svg-icons'
 
 export default function SearchedSong({ song }) {
   const duration = new Date(song ? song.duration : 0)
-  // console.log(song)
+  console.log(song)
 
   // find best thumbnail
-  const useThumbnail = song.thumbnails
-    .reverse()
-    .find((t) => t.width === t.height && t.width >= 98)
+  const smallThumbnail = song
+    ? song.thumbnails.reverse().find((t) => t.width === t.height && t.width >= 98)
+    : null
+
+  const bigThumbnail = song
+    ? song.thumbnails.reverse().find((t) => t.width === t.height && t.width >= 300)
+    : null
 
   return song ? (
     <div className={styles.container}>
       <figure>
         <Image
-          src={song ? useThumbnail.url || song.thumbnails[0].url : ''}
+          src={song ? smallThumbnail.url || song.thumbnails[0].url : ''}
           alt={song ? song.name : 'error'}
           layout="fixed"
           height="98px"

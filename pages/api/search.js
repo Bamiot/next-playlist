@@ -13,7 +13,6 @@ export default async function handler(req, res) {
             searchAll
               .tracks(query)
               .then((data) => {
-                // console.log('search', data)
                 res.status(200).json({
                   status: 'success',
                   result: data
