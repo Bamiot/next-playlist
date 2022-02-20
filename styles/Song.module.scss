@@ -21,10 +21,10 @@
 }
 
 .serviceLink {
-  flex-direction: row;
-  height: 35px;
+  flex-direction: row !important;
+  height: 35px !important;
   & > * {
-    height: 100%;
-    margin: 0 15px;
+    height: 100% !important;
+    margin: 0 15px !important;
   }
 }

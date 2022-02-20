@@ -82,13 +82,14 @@ export async function getStaticPaths() {
     }
   }).then((res) => res.json())
 
-  const paths = songs
-    ? songs.result.map((song) => ({
-        params: {
-          id: song._id
-        }
-      }))
-    : []
+  const paths =
+    songs && songs.result
+      ? songs.result.map((song) => ({
+          params: {
+            id: song._id
+          }
+        }))
+      : []
 
   return {
     paths,
