@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpotify, faYoutube, faDeezer } from '@fortawesome/free-brands-svg-icons'
 
 export default function ServicesLink({ pIds, className }) {
-  return (
+  return pIds ? (
     <div className={[styles.services, className].join(' ')}>
       <FontAwesomeIcon
         icon={faSpotify}
@@ -36,5 +36,5 @@ export default function ServicesLink({ pIds, className }) {
         ].join(' ')}
       />
     </div>
-  )
+  ) : null
 }
