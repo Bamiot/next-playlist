@@ -9,16 +9,19 @@
   border-radius: 10px;
   height: 100px;
   margin: 10px 0;
+  width: 100%;
   figure {
     img {
       border-radius: 10px 0 0 10px;
     }
+    width: 100px;
   }
   .info {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: calc(100% - 130px);
+    max-width: calc(100% - #{100px + 35px});
+    margin-right: auto;
     & > * {
       text-overflow: ellipsis;
       overflow: hidden;
@@ -39,26 +42,21 @@
   &::-webkit-scrollbar {
     left: 100px;
   }
+
   .services {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    margin-right: 5px;
+  }
+
+  .know {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: #000;
+    filter: drop-shadow(0 0 5px #fff);
+
     & > * {
-      font-size: 24px;
-      cursor: alias;
-    }
-    .spotify {
-      color: #1dd05d;
-    }
-    .youtube {
-      color: red;
-    }
-    .deezer {
-      color: rgb(1, 84, 179);
-    }
-    .missing {
-      filter: grayscale(100%) opacity(0.5);
+      height: 20px;
+      width: 20px;
     }
   }
 }

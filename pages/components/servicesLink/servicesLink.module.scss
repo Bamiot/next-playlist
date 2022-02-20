@@ -1,0 +1,22 @@
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  & > * {
+    font-size: 24px;
+    cursor: alias;
+  }
+  .spotify {
+    color: #1dd05d;
+  }
+  .youtube {
+    color: red;
+  }
+  .deezer {
+    color: rgb(1, 84, 179);
+  }
+  .missing {
+    filter: grayscale(100%) opacity(0.5);
+  }
+}

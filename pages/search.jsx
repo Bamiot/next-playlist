@@ -1,15 +1,18 @@
 import styles from '../styles/Search.module.scss'
 import { useState, useEffect } from 'react'
 import LocalStorage from '../utils/localStarage'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchedSong from './components/searchedSong'
 import LoadingSpinner from './components/loadingSpinner/loadingSpinner'
+import Image from 'next/image'
+import ServicesLink from './components/servicesLink/servicesLink'
 
 export default function Song() {
   const [query, setQuery] = useState('')
   const [songs, setSongs] = useState([])
   const [loading, setLoading] = useState(false)
+  const [modalSong, setModalSong] = useState(null)
 
   const [isLogged, setIsLogged] = useState(false)
   const [user, setUser] = useState({})
@@ -47,6 +50,31 @@ export default function Song() {
     setLoading(false)
   }
 
+  async function addToDB(song) {
+    const response = await fetch('/api/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: user.name,
+        token: user.token,
+        song: song
+      })
+    })
+    const data = await response.json()
+    if (data.status === 'error') {
+      alert(data.message)
+    } else {
+      // console.log(data.result)
+      window.location.href = `/song/${data.result.insertedId}`
+    }
+  }
+
+  function redirectSong(song) {
+    window.location.href = `/song/${song._id}`
+  }
+
   return isLogged ? (
     <div className={styles.container}>
       <form onSubmit={search}>
@@ -66,7 +94,10 @@ export default function Song() {
         ) : songs.length > 0 ? (
           songs.map((song, i) => (
             <li key={i}>
-              <SearchedSong song={song} />
+              <SearchedSong
+                song={song}
+                onClick={song._id ? redirectSong : setModalSong}
+              />
             </li>
           ))
         ) : (
@@ -76,6 +107,42 @@ export default function Song() {
           </li>
         )}
       </ul>
+      {modalSong ? (
+        <div
+          className={styles.modal}
+          onClick={(e) => {
+            if (e.target.className === styles.modal) setModalSong(null)
+          }}
+        >
+          <div className={styles.modalContent}>
+            <div className={styles.modalHeader}>
+              <h2>{modalSong.name}</h2>
+              <b>{modalSong.artists.join(', ')}</b>
+              <p>{modalSong.album}</p>
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={styles.modalClose}
+                onClick={() => setModalSong(null)}
+              />
+            </div>
+            <ServicesLink pIds={modalSong.pIds} className={styles.modalServices} />
+            <figure
+              onClick={(e) => {
+                e.stopPropagation()
+                addToDB(modalSong)
+              }}
+            >
+              <Image
+                src={modalSong.thumbnail.bigThumbnail.url}
+                alt={modalSong.name}
+                width="300px"
+                height="300px"
+              />
+            </figure>
+            <b>tags coming soon</b>
+          </div>
+        </div>
+      ) : null}
     </div>
   ) : null
 }

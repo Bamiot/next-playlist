@@ -40,6 +40,22 @@ const song = {
         else return resolve(result)
       })
     })
+  },
+  getSongs: () => {
+    return new Promise((resolve, reject) => {
+      songDB.find({}).toArray((err, result) => {
+        if (err) return reject(err)
+        else return resolve(result)
+      })
+    })
+  },
+  getSongByPIds: (pIds) => {
+    return new Promise((resolve, reject) => {
+      songDB.find({ 'pIds.isrc': pIds.isrc }).toArray((err, result) => {
+        if (err) return reject(err)
+        else return resolve(result)
+      })
+    })
   }
 }
 

@@ -2,22 +2,40 @@ import Image from 'next/image'
 import styles from './searchedSong.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpotify, faYoutube, faDeezer } from '@fortawesome/free-brands-svg-icons'
+import { faDatabase } from '@fortawesome/free-solid-svg-icons'
+import ServicesLink from '../servicesLink/servicesLink'
 
-export default function SearchedSong({ song }) {
+export default function SearchedSong({ song, onClick }) {
   const duration = new Date(song ? song.duration : 0)
-  console.log(song)
 
-  // find best thumbnail
-  const smallThumbnail = song
-    ? song.thumbnails.reverse().find((t) => t.width === t.height && t.width >= 98)
-    : null
+  const findThumbnail = (width, square = true) => {
+    if (song) {
+      const filteredThumbnails = [...song.thumbnails]
+        .reverse()
+        .filter((e) => !square || e.width === e.height)
 
-  const bigThumbnail = song
-    ? song.thumbnails.reverse().find((t) => t.width === t.height && t.width >= 300)
-    : null
+      let thumbnail = filteredThumbnails.find((e) => e.width >= width)
+      while (!thumbnail) {
+        width--
+        thumbnail = filteredThumbnails.find((e) => e.width >= width)
+      }
+
+      return thumbnail
+    } else return null
+  }
+
+  const smallThumbnail = findThumbnail(98)
+  const bigThumbnail = findThumbnail(300)
 
   return song ? (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onClick={(e) => {
+        const s = { ...song }
+        s.thumbnail = { bigThumbnail, smallThumbnail }
+        onClick(s)
+      }}
+    >
       <figure>
         <Image
           src={song ? smallThumbnail.url || song.thumbnails[0].url : ''}
@@ -35,41 +53,12 @@ export default function SearchedSong({ song }) {
           duration && duration.getSeconds() > 9 ? '' : '0'
         }${duration ? duration.getSeconds() : 0}`}</span>
       </div>
-      <div className={styles.services}>
-        <FontAwesomeIcon
-          icon={faSpotify}
-          onClick={() =>
-            window.open(`https://open.spotify.com/track/${song.pIds.spotify}`, '_blank')
-          }
-          className={[
-            styles.spotify,
-            song.pIds.spotify !== undefined ? null : styles.missing
-          ].join(' ')}
-        />
-        <FontAwesomeIcon
-          icon={faYoutube}
-          onClick={() => {
-            window.open(
-              `https://music.youtube.com/watch?v=${song.pIds.youtube}`,
-              '_blank'
-            )
-          }}
-          className={[
-            styles.youtube,
-            song.pIds.youtube !== undefined ? null : styles.missing
-          ].join(' ')}
-        />
-        <FontAwesomeIcon
-          icon={faDeezer}
-          onClick={() => {
-            window.open(`https://deezer.com/track/${song.pIds.deezer}`, '_blank')
-          }}
-          className={[
-            styles.deezer,
-            song.pIds.deezer !== undefined ? null : styles.missing
-          ].join(' ')}
-        />
-      </div>
+      {song._id ? (
+        <div className={styles.know}>
+          <FontAwesomeIcon icon={faDatabase} />
+        </div>
+      ) : null}
+      <ServicesLink pIds={song ? song.pIds : {}} className={styles.services} />
     </div>
   ) : null
 }

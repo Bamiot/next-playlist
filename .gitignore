@@ -36,3 +36,7 @@ yarn-error.log*
 data
 
 credentials
+
+cloc.sh
+.clocignore
+response_example.json
