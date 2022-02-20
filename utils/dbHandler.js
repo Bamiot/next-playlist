@@ -1,4 +1,5 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
+
 const url = process.env.DB_URL
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
@@ -26,7 +27,8 @@ const init = async () => {
 
 const song = {
   addSong: (song) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       songDB.insertOne(song, (err, result) => {
         if (err) return reject(err)
         else return resolve(result)
@@ -34,15 +36,17 @@ const song = {
     })
   },
   getSong: (songId) => {
-    return new Promise((resolve, reject) => {
-      songDB.findOne({ _id: songId }, (err, result) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
+      songDB.findOne({ _id: ObjectId(songId) }, (err, result) => {
         if (err) return reject(err)
         else return resolve(result)
       })
     })
   },
   getSongs: () => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       songDB.find({}).toArray((err, result) => {
         if (err) return reject(err)
         else return resolve(result)
@@ -50,7 +54,8 @@ const song = {
     })
   },
   getSongByPIds: (pIds) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+      await init()
       songDB.find({ 'pIds.isrc': pIds.isrc }).toArray((err, result) => {
         if (err) return reject(err)
         else return resolve(result)
@@ -72,7 +77,7 @@ const user = {
   getUser: (userId) => {
     return new Promise(async (resolve, reject) => {
       await init()
-      userDB.findOne({ _id: userId }, (err, user) => {
+      userDB.findOne({ _id: ObjectId(userId) }, (err, user) => {
         if (err) return reject(err)
         return resolve(user)
       })

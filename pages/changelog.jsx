@@ -21,22 +21,22 @@ const Post = ({ title, version, features, fix }) => (
 const update = [
   {
     title: 'Changelog',
-    version: 'v0.0.2',
+    version: 'v0.1.1',
     features: ['Added a changelog'],
     fix: ['change pages name']
   },
   {
     title: 'DB',
-    version: 'v0.0.3',
+    version: 'v0.2.0',
     features: ['add track to database (without tags)'],
     fix: ['use the thumbnail with the most appropriate size']
+  },
+  {
+    title: 'Share !',
+    version: 'v0.2.1',
+    features: ['dynamically creates sharing page for each track in the database (WIP)'],
+    fix: ['many fixs']
   }
-  // {
-  //   title: 'Share !',
-  //   version: 'v0.0.4',
-  //   features: ['dynamically creates a track sharing page'],
-  //   fix: []
-  // }
 ]
 
 export default function Changelog() {
