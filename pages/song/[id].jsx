@@ -80,7 +80,14 @@ export async function getStaticPaths() {
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then((res) => res.json())
+  })
+    .then((res) => {
+      console.log(res)
+      return res.json()
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 
   const paths =
     songs && songs.result
