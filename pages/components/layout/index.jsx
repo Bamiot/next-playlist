@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import styles from './layout.module.scss'
 
-export default function Layout({ children }) {
+export default function Layout({ children, title }) {
   return (
     <>
       <Head>
-        <title>Next Playlist</title>
+        <title>{title || 'Next Playlist'}</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="*" />

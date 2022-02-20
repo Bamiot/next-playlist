@@ -36,6 +36,12 @@ const update = [
     version: 'v0.2.1',
     features: ['dynamically creates sharing page for each track in the database (WIP)'],
     fix: ['many fixs']
+  },
+  {
+    title: 'page name',
+    version: 'v0.2.2',
+    features: ['sharing pages are named with the track name'],
+    fix: ['fix service icons size']
   }
 ]
 

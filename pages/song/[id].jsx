@@ -1,4 +1,6 @@
 import styles from '../../styles/Song.module.scss'
+import Layout from '../components/layout'
+import Header from '../components/header'
 import { useState, useEffect } from 'react'
 import LocalStorage from '../../utils/localStarage'
 import Image from 'next/image'
@@ -19,7 +21,7 @@ const MONTH = [
   'Dec'
 ]
 
-export default function Post({ song }) {
+export default function Song({ song }) {
   const duration = new Date(song ? song.duration : 0)
   const releaseDate = new Date(song ? song.releaseDate : 0)
 
@@ -54,6 +56,13 @@ export default function Post({ song }) {
     </div>
   ) : null
 }
+
+Song.getLayout = (page) => (
+  <Layout title={page.props.song.name}>
+    <Header />
+    {page}
+  </Layout>
+)
 
 const baseUrl = process.env.BASE_URL
 
