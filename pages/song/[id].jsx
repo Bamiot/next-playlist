@@ -58,7 +58,7 @@ export default function Song({ song }) {
 }
 
 Song.getLayout = (page) => (
-  <Layout title={page.props.song.name || null}>
+  <Layout title={page && page.props && pages.props.song ? page.props.song.name : null}>
     <Header />
     {page}
   </Layout>
