@@ -75,8 +75,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const baseUrl2 = 'http://localhost:3000'
-  const songs = await fetch(`${baseUrl2}/api/songs`, {
+  const songs = await fetch(`${baseUrl}/api/songs`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
