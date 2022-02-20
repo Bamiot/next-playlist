@@ -27,12 +27,14 @@ export default function Home({ songs }) {
     <div className={styles.container}>
       <ul>
         {songs.map((song, i) => (
-          <SearchedSong
-            key={i}
-            song={song}
-            onClick={redirectSong}
-            className={styles.song}
-          />
+          <li>
+            <SearchedSong
+              key={i}
+              song={song}
+              onClick={redirectSong}
+              className={styles.song}
+            />
+          </li>
         ))}
       </ul>
     </div>
