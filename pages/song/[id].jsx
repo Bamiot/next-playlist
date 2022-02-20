@@ -51,6 +51,7 @@ export default function Song({ song }) {
             } ${releaseDate.getFullYear()}`
           : 'nd'}
       </span>
+      <p>{song.addBy ? `add by: ${song.addBy.name}` : null}</p>
 
       <ServicesLink pIds={song ? song.pIds : {}} className={styles.serviceLink} />
     </div>

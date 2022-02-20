@@ -4,8 +4,9 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import { useState, useEffect } from 'react'
 import LocalStorage from '../utils/localStarage'
+import SearchedSong from './components/searchedSong'
 
-export default function Home() {
+export default function Home({ songs }) {
   const [isLogged, setIsLogged] = useState(false)
   const [user, setUser] = useState({})
   useEffect(function () {
@@ -18,9 +19,38 @@ export default function Home() {
     }
   }, [])
 
+  function redirectSong(song) {
+    window.location.href = `/song/${song._id}`
+  }
+
   return (
     <div className={styles.container}>
-      <button>Click</button>
+      <ul>
+        {songs.map((song, i) => (
+          <SearchedSong
+            key={i}
+            song={song}
+            onClick={redirectSong}
+            className={styles.song}
+          />
+        ))}
+      </ul>
     </div>
   )
+}
+
+const baseUrl = process.env.BASE_URL
+
+export async function getServerSideProps(context) {
+  const songs = await fetch(`${baseUrl}/api/songs`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((res) => res.json())
+  return {
+    props: {
+      songs: songs.result
+    }
+  }
 }

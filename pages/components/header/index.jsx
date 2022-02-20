@@ -57,7 +57,10 @@ export default function Header() {
           Version: <span>{version}</span>
         </footer>
       </nav>
-      <h1>Next-playlist</h1>
+
+      <Link href={'/'}>
+        <h1>Next-playlist</h1>
+      </Link>
     </header>
   )
 }

@@ -17,6 +17,7 @@ export default async function handler(req, res) {
       .then((user) => {
         if (user) {
           if (user.tokens.includes(token)) {
+            song.addBy = user
             db.song
               .addSong(song)
               .then((data) => {

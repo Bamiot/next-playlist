@@ -42,6 +42,16 @@ const update = [
     version: 'v0.2.2',
     features: ['sharing pages are named with the track name'],
     fix: ['fix service icons size']
+  },
+  {
+    title: 'track in homepage',
+    version: 'v0.2.3',
+    features: [
+      'view all tracks in homepage',
+      'adds who added the sound',
+      'clicking on the "logo" redirects to home'
+    ],
+    fix: ['fix changelog scroll']
   }
 ]
 
