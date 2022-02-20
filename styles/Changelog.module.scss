@@ -1,7 +1,5 @@
 .container {
   margin: 0 auto;
-  max-width: 600px;
-  min-width: 300px;
   height: calc(100% - 50px);
   overflow-y: scroll;
 
@@ -10,6 +8,9 @@
     font-size: 28px;
     margin: 10px 0;
     padding-left: 5px;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 0 auto;
     .github {
       cursor: pointer;
       margin-left: auto;
@@ -26,6 +27,9 @@
 
 .post {
   position: relative;
+  max-width: 600px;
+  min-width: 300px;
+  margin: 0 auto;
   padding: 10px;
   border-top: solid 1px #ccc;
   h2 {
