@@ -52,6 +52,12 @@ const update = [
       'clicking on the "logo" redirects to home'
     ],
     fix: ['fix changelog scroll']
+  },
+  {
+    title: 'infinite loading',
+    version: 'v0.2.4',
+    features: [],
+    fix: ['fix infinite loading on search']
   }
 ]
 

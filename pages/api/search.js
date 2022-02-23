@@ -28,6 +28,7 @@ export default async function handler(req, res) {
                       if (i === a.length - 1) resolve2()
                     })
                   })
+                  resolve2()
                 }).then(() => {
                   res.status(200).json({
                     status: 'success',
