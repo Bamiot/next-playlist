@@ -26,7 +26,7 @@ export default function Home({ songs }) {
   return (
     <div className={styles.container}>
       <ul>
-        {songs.map((song, i) => (
+        {[...songs].reverse().map((song, i) => (
           <li key={i}>
             <SearchedSong song={song} onClick={redirectSong} className={styles.song} />
           </li>
@@ -38,7 +38,7 @@ export default function Home({ songs }) {
 
 const baseUrl = process.env.BASE_URL
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const songs = await fetch(`${baseUrl}/api/songs`, {
     method: 'GET',
     headers: {
@@ -48,6 +48,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       songs: songs.result
-    }
+    },
+    revalidate: 5
   }
 }

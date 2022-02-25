@@ -54,10 +54,16 @@ const update = [
     fix: ['fix changelog scroll']
   },
   {
-    title: 'infinite loading',
+    title: 'Infinite loading',
     version: 'v0.2.4',
     features: [],
     fix: ['fix infinite loading on search']
+  },
+  {
+    title: 'Swipe!',
+    version: 'v0.2.5',
+    features: ['swipe to open the menu'],
+    fix: ['reverse order of tracks in homepage', 'improves home page loading']
   }
 ]
 

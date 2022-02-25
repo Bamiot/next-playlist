@@ -1,0 +1,394 @@
+- Pop
+  - Regional Pop
+    - Arab Pop
+    - Britpop
+    - Europop
+    - French Pop
+    - German Pop
+    - C - pop
+    - J - Pop
+    - K - Pop
+  - Indie Pop
+  - Adult Contemporary
+  - Bubblegum Pop
+  - Dance Pop
+  - Electro Pop
+  - Latin Ballad
+  - Orchestral Pop
+  - Pop Rap
+  - Popera
+  - Pop/Rock
+  - Pop Punk
+  - Psychedelic Pop
+  - Synthpop
+  - Teen Pop
+  - Wonky Pop
+- Rock
+  - Alternative Rock
+    - College Rock
+    - Experimental Rock
+    - Indie Rock
+    - Gothic Rock
+    - Progressive rock
+    - Punk
+- Art punk
+- Britpunk
+- Crust Punk
+- Hardcore Punk
+- Folk Punk
+- Jazz Punk
+  - Crossover thrash
+  - Grunge
+  - Musique concrète
+  - New Wave
+  - Acid Rock
+  - Adult - Oriented Rock
+  - Adult Alternative
+  - American Traditional Rock
+  - Art Rock
+  - Blues - Rock
+  - Cock Rock
+  - Math Rock
+  - Noise Rock
+  - Jam Bands
+  - Prog - Rock/Art Rock
+  - Rock & Roll
+  - Rockabilly
+  - Roots Rock
+  - Southern Rock
+  - Tex - Mex
+- Metal
+  - Heavy Metal
+  - Speed Metal
+  - Thrash Metal
+  - Power Metal
+  - Death Metal
+  - Black Metall
+  - Pagan Metal
+  - Viking Metal
+  - Folk Metal
+  - Symphonic Metal
+  - Gothic Metal
+  - Glam Metal
+  - Hair Metal
+  - Doom Metal
+  - Groove Metal
+  - Industrial Metal
+  - Modern Metal
+  - Neoclassical Metal
+  - Post Metal
+  - Progressive Metal
+  - Avantgarde Metal
+  - Math Metal
+  - Grindcore
+  - Hardcore
+  - Metalcore
+  - Deathcore
+  - Post Hardcore
+  - Mathcore
+- Jazz
+  - Acid Jazz
+  - Avant - Garde Jazz
+  - Big Band
+  - Contemporary Jazz
+  - Crossover Jazz
+  - Gypsy Jazz (kudos to Mike Tait Tafoya)
+  - Hard Bop
+  - Latin Jazz
+  - Mainstream Jazz
+  - Ragtime
+  - Smooth Jazz
+  - Trad Jazz
+  - Jazz - Funk
+  - Free Jazz
+  - Modal Jazz
+- Blues
+  - Acoustic Blues
+  - Regional Blues
+    - African Blues
+    - British Blues
+    - Canadian Blues
+    - Chicago Blues
+    - Delta Blues
+    - Detroit Blues
+    - Kansas City Blues
+    - Louisiana Blues
+    - Memphis Blues
+    - New Orleans Blues
+    - NY Blues
+    - Piedmont Blues
+    - St. Louis Blues
+    - Texas Blues
+    - West Coast Blues
+  - Blues Rock (je me dis que c’est mieux ici que dans Rock)
+  - Classic Blues
+  - Contemporary Blues
+  - Contemporary R&B
+  - Country Blues
+    - Hill Country Blues (en fait c’est une forme régionale de Country Blues donc je sais pas si ça va là ou dans regional)
+  - Dark Blues
+  - Doom Blues
+  - Electric Blues
+  - Folk Blues
+  - Gospel Blues
+  - Jazz Blues
+  - Jump Blues
+  - Harmonica Blues
+  - Modern Blues
+  - Piano Blues
+  - Punk Blues
+  - Ragtime Blues
+  - Rhythm Blues
+  - Soul Blues
+  - Urban Blues
+- Musique électronique
+  - Dance
+    - Club Dance
+    - Eurodance
+    - Hard Dance
+  - House
+    - Acid House
+    - Ambient House
+    - Bass House
+    - Bouncy House
+    - Deep House
+    - Electro House
+    - Freestyle House
+    - Funky House
+    - Future House
+    - Ghetto House
+    - Hip House
+    - Minimal House
+    - Progressive House
+    - Swing House
+    - Vocal House
+    - Tech House
+    - Regional House
+- Chicago House
+- Dutch House
+- French House
+- Italo House
+- Latin House
+- UK Hard House
+  - Down Tempo
+    - Acid Jazz
+    - Chill Out
+    - Dub Music
+    - Dubtronica
+    - Moombahton
+    - Nu Jazz
+    - Trip Hop
+  - Dubstep
+    - Brostep
+    - Chillstep
+    - Dubstyle
+    - Regstep
+  - Electro
+    - 2 - Step
+    - 8 - bit, Bitpop, Chiptune
+- Bitpop
+- Video Game music
+  - Chillwave
+  - Electroswing
+  - Garage
+    - Future Garage
+    - US Garage
+  - Glitch
+    - Glitch Hop
+    - Glitch Pop
+  - Hardcore
+    - Breakcore
+    - Digital Hardcore
+    - Doomcore
+    - Gabber
+    - Happy Hardcore
+    - Hardstyle
+    - Horrorcore
+    - Jumpstyle
+    - Speedcore
+    - Terrorcore
+  - Techno
+    - Acid Techno
+    - Ambient Techno
+    - Bouncy Techno
+    - Detroit Techno
+    - Free Tekno
+    - Minimal
+    - Schranz
+    - Techno - Dnb
+    - Technopop
+  - D&B
+    - Darkcore
+    - Darkstep
+    - Drumfunk
+    - Drumstep
+    - Hardstep
+    - Intelligent Drum and Bass
+    - Jump - Up
+    - Jungle
+- Oldschool Jungle:
+- Darkside Jungle
+- Ragga Jungle
+  - Liquid
+  - Techstep
+  - Dub
+    - Ambient Dub
+    - Liquid Dub
+  - Electronic Rock
+    - Dance - Punk
+    - Dance - Rock
+    - Dark Wave
+    - Electroclash
+    - Electronicore
+    - Electropunk
+    - Indietronica
+    - New Rave
+    - Space Rock
+    - Synthpop
+    - Synthpunk
+  - Trance
+    - Acid Trance
+    - Classic Trance
+    - Dream Trance
+    - Goa Trance
+- Dark Psytrance
+- Psybreaks
+- Psyprog
+  - Hard Trance
+  - Tech Trance
+  - Uplifting Trance
+- Orchestral Uplifting
+  - Vocal Trance
+  - Trap
+- Hip - hop / Rap
+  - Alternative Rap
+  - Bounce
+  - Conscious Hip Hop
+  - Country - Rap
+  - Crunkcore
+  - Dirty South
+  - East Coast
+  - Freestyle Rap
+  - G - Funk
+  - Gangsta Rap
+  - Golden Age
+  - Hardcore Rap
+  - Hip - Hop
+  - Industrial Hip Hop
+  - Instrumental Hip Hop
+  - Jazz Rap
+  - Latin Rap
+  - Midwest Hip Hop
+  - New School Hip Hop
+  - Old School Rap
+  - Rap
+  - Underground Rap
+  - West Coast Rap
+- Country
+  - Alternative Country
+  - Americana
+  - Australian Country
+  - Bluegrass
+- Progressive Bluegrass
+- Reactionary Bluegrass
+- Contemporary Bluegrass
+- Traditional Bluegrass
+- - Blues Country
+  - Christian Country
+  - Classic Country
+  - Contemporary Country
+  - Country Gospel
+  - Country Pop
+  - Country Rap
+  - Country Rock
+  - Country Soul
+  - Cowpunk
+  - Dansband
+  - Honky Tonk
+  - Instrumental Country
+  - Nashville Sound
+  - Outlaw Country
+  - Progressive Country
+  - Psychobilly
+  - Traditional Country
+  - Western
+  - Western Swing
+- Classique
+  - Avant - Garde
+  - Ballet
+  - Baroque
+  - Choral
+  - Classical Crossover
+  - Concerto
+  - Contemporary Classical
+  - Expressionist
+  - High Classical
+  - Impressionist
+  - Mass Requiem
+  - Medieval
+  - Minimalism
+  - Modern Classical
+  - Opera
+  - Orchestral
+  - Renaissance
+  - Romantic
+  - Sonata
+  - Symphonic
+- Industrielle
+  - Aggrotech
+  - Coldwave
+  - Cybergrind
+  - Death Industrial
+  - Electro - Industrial
+  - Futurepop
+  - Industrial Metal
+  - Industrial Rock
+  - Noise
+  - Japanoise
+  - Power Electronics
+  - Power Noise
+- Latin
+  - Alternativo & Rock Latino
+  - Argentine tango
+  - Bachata
+  - Baladas y Boleros
+  - Bolero
+  - Bossa Nova
+  - Brazilian
+    - Brazilian Rock
+    - Frevo
+    - Funk Carioca
+    - Lambada
+    - Música Popular Brasileira
+    - Samba
+    - Samba Rock
+    - Zouk - Lambada
+  - Contemporary Latin
+  - Flamenco / Spanish Flamenco (
+  - Latin Jazz
+  - Mariachi
+  - Nuevo Flamenco
+  - Pop Latino
+  - Punta
+  - Punta Rock
+  - Reggaeton y Hip - Hop
+  - Salsa y Tropical
+  - Zouk
+- Reggae
+  - Dancehall
+  - Dub
+  - Roots Reggae
+  - Reggae Fusion
+  - Raggamuffin
+    - Ragga
+    - Dancehall
+  - Ska
+    - 2 Tone
+    - Dub
+    - Rocksteady
+- Autres
+  - Lo - Fi (Ne pas confondre avec Lo - Fi Hip - hop, plus simple de choisir le style Hip - Hop et le style Lo - Fi pour classifier)
+  - Parodie
+  - Ambient
+- Tag custom
+  - Peut - être pouvoir en créer des favoris qui apparaissent là du coup en plus d’un champ de texte ?

@@ -19,9 +19,8 @@
   }
   ul {
     position: relative;
-
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100%);
     overflow-y: scroll;
     li {
       min-width: 300px;

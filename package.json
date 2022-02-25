@@ -1,6 +1,6 @@
 {
   "name": "next-playlist",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -25,6 +25,7 @@
     "next": "12.0.9",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-swipeable": "^6.2.0",
     "sass": "^1.49.0",
     "spotify-web-api-node": "^5.0.2",
     "string-similarity": "^4.0.4",

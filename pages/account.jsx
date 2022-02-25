@@ -2,15 +2,22 @@ import { useState, useEffect } from 'react'
 import LocalStorage from '../utils/localStarage'
 import styles from '../styles/Account.module.scss'
 
-const LabeledInput = ({ name, type, value, cb, className }) => (
-  <div className={[styles.labeledInput, className].join(' ')}>
-    <label htmlFor={name}>
-      {name}
-      {': '}
-    </label>
-    <input type={type} name={name} value={value} onChange={(e) => cb(e.target.value)} />
-  </div>
-)
+const LabeledInput = ({ name, type, value, cb, className }) => {
+  const [error, setError] = useState(false)
+  return (
+    <div
+      className={[styles.labeledInput, className, error ? styles.labelError : ''].join(
+        ' '
+      )}
+    >
+      <label htmlFor={name}>
+        {name}
+        {': '}
+      </label>
+      <input type={type} name={name} value={value} onChange={(e) => cb(e.target.value)} />
+    </div>
+  )
+}
 
 export default function Home() {
   const [loginName, setLoginName] = useState('')

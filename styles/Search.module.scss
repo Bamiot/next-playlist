@@ -23,6 +23,11 @@
       cursor: pointer;
     }
   }
+  form.url {
+    .icon {
+      color: black;
+    }
+  }
   ul {
     position: relative;
     width: 100%;
@@ -31,6 +36,9 @@
       min-width: 300px;
       max-width: 600px;
       margin: 0 auto;
+      i {
+        text-decoration: underline;
+      }
     }
   }
 }

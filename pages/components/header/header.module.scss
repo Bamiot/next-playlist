@@ -14,13 +14,6 @@ $burger-color: $light-gray;
   align-items: center;
   padding-left: 70px;
   padding-right: 10px;
-  h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: $white;
-    font-family: 'Righteous', cursive;
-    cursor: pointer;
-  }
   nav {
     position: fixed;
     top: 0;
@@ -116,4 +109,30 @@ $burger-color: $light-gray;
   span:nth-child(3) {
     transform: translate(0, 3px) rotate(-45deg);
   }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $white;
+    font-family: 'Righteous', cursive;
+    cursor: pointer;
+  }
+}
+
+.swipeHandle {
+  // border: 1px solid red;
+  // background: #0ff4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 50px);
+  height: 100%;
+  z-index: -1;
 }

@@ -1,18 +1,22 @@
 import styles from '../styles/Search.module.scss'
 import { useState, useEffect } from 'react'
 import LocalStorage from '../utils/localStarage'
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faTimes, faLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SearchedSong from './components/searchedSong'
 import LoadingSpinner from './components/loadingSpinner/loadingSpinner'
 import Image from 'next/image'
 import ServicesLink from './components/servicesLink/servicesLink'
 
+const urlRegex =
+  /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi
+
 export default function Song() {
   const [query, setQuery] = useState('')
   const [songs, setSongs] = useState([])
   const [loading, setLoading] = useState(false)
   const [modalSong, setModalSong] = useState(null)
+  const [searchUrl, setSearchUrl] = useState(false)
 
   const [isLogged, setIsLogged] = useState(false)
   const [user, setUser] = useState({})
@@ -42,7 +46,8 @@ export default function Song() {
     })
     const data = await response.json()
     if (data.status === 'error') {
-      alert(data.message)
+      // alert(data.message)
+      setSongs([])
     } else {
       console.log(data.result)
       setSongs(data.result)
@@ -77,16 +82,20 @@ export default function Song() {
 
   return isLogged ? (
     <div className={styles.container}>
-      <form onSubmit={search}>
+      <form onSubmit={search} className={[searchUrl ? styles.url : ''].join(' ')}>
         <input
           type="text"
           placeholder="Search song"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setSearchUrl(!!e.target.value.match(urlRegex))
+            setQuery(e.target.value)
+          }}
         />
         <button type="submit">
           <FontAwesomeIcon icon={faSearch} className={styles.icon} />
         </button>
+        {/* {searchUrl ? <FontAwesomeIcon icon={faLink} className={styles.icon} /> : null} */}
       </form>
       <ul>
         {loading ? (
@@ -101,9 +110,10 @@ export default function Song() {
             </li>
           ))
         ) : (
-          <li>
+          <li style={{ textAlign: 'center' }}>
             No results, try with a more precise search, for example with the artist or the
             album.
+            {/* <br /> <i>or with URL (Beta)</i> */}
           </li>
         )}
       </ul>
